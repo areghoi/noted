@@ -6,21 +6,6 @@ set -e
 # START FUNCTIONS (alphabetical order)
 #
 
-checkForEnvVariable() {
-  varval=${!1}
-  if [ ! "$(echo $varval)" ]; then
-    cat <<EOF
-
-ERROR
-
-    A required environment variable is not available:
-    $1
-
-EOF
-    exit 1
-  fi
-}
-
 create() {
   newEntry() {
     headerText="$@"
@@ -85,13 +70,6 @@ outputConfig() {
   echo "NOTED_TIMESTAMP_FORMAT=${NOTED_TIMESTAMP_FORMAT}"
   echo "NOTED_TEMPLATE_FILE=${NOTED_TEMPLATE_FILE:-<<DEFAULT>>}"
   echo "NOTED_TODO_MARKER=${NOTED_TODO_MARKER}"
-}
-
-validate() {
-  if [ -z "$1" ]; then
-    echo "${2}"
-    exit 1
-  fi
 }
 
 version() {
