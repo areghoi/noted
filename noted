@@ -46,7 +46,7 @@ EOF
 }
 
 edit() {
-  open "${markdownFile}"
+  $EDITOR "${markdownFile}"
 }
 
 loadProperties() {
@@ -77,14 +77,14 @@ version() {
 }
 
 view() {
-  open "${htmlFile}"
+  open "${markdownFile}"
 }
 
 #
 # END FUNCTIONS
 #
 
-VERSION="0.0.3"
+VERSION="0.0.4"
 
 #
 # Default Settings
@@ -118,13 +118,20 @@ if  [[ "${subcommand}" == "config" ]]; then
   outputConfig
 elif [[ "${subcommand}" == "version" ]]; then
   version
-elif [[ "${subcommand}" == "edit" ]] || [[ "${subcommand}" == "view" ]]; then
+elif [[ "${subcommand}" == "edit" ]]; then
   arg="$2"
   if [[ -z "${arg}" ]]; then
     arg="${currDate}"
   fi
   markdownFile "${arg}"
   edit "${markdownFile}"
+elif [[ "${subcommand}" == "view" ]]; then
+  arg="$2"
+  if [[ -z "${arg}" ]]; then
+    arg="${currDate}"
+  fi
+  markdownFile "${arg}"
+  view "${markdownFile}"
 elif [[ "${subcommand}" == "grep" ]]; then
   shift
   ngrep "$@"
