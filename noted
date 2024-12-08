@@ -91,7 +91,7 @@ VERSION="0.0.4"
 #
 # Settings that cannot be overridden
 # Location of config file
-CONFIG_FILE=$HOME/.notedconfig
+CONFIG_FILE=${XDG_CONFIG_HOME:-$HOME/.config}/noted/config
 
 # Settings that can be overridden from properties
 # name files like this
@@ -100,7 +100,7 @@ NOTED_FILE_NAME_DATE_FORMAT="+%Y-%m-%d"
 NOTED_TIMESTAMP_FORMAT="+%H:%M:%S UTC"
 NOTED_TEMPLATE_FILE=""
 # keep the directory where notes are stored here
-NOTED_MARKDOWN_HOME=$HOME/Documents/notes
+NOTED_MARKDOWN_HOME=$HOME/notes
 NOTED_TODO_MARKER="TODO"
 
 #
